@@ -1,0 +1,95 @@
+---
+layout: post_layout
+title: Under the hood of Socket.IO namespaces
+category: blog
+---
+<p>I am working on a very simple game using NodeJS and Socket.IO. I decided to separate my game and chat communication into two namespaces in Socket.IO to make the logic a bit easier to follow. One problem I encountered was that I wasn&rsquo;t sure how to broadcast to all connected clients in a specific namespace. If you&rsquo;re not dealing with namespaces, it&rsquo;s simple:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>io.sockets.emit(...);</pre></div>
+</div>
+
+
+<p>But what do you do with namespaces? I tried <code>io.sockets.emit(...)</code> as well as <code>io.of('/chat').sockets.emit()</code>, but neither of these attempts were successful. The documentation on the Socket.IO site also provided no clues.</p>
+
+<p>While debugging my application, I decided to look into the source of Socket.IO. It&rsquo;s actually pretty interesting to see some of the code behind how Socket.IO is implemented. I&rsquo;ll go through a small sample of my code and explain what was going on behind the scenes. If you&rsquo;re simply interested in the solution, feel free to skip to the bottom.</p>
+
+<p>A very simplified version of some of my server code looks something like the following:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="keyword">var</span> express = require(<span class="string"><span class="delimiter">'</span><span class="content">express</span><span class="delimiter">'</span></span>),
+    app = express.createServer().listen(<span class="integer">8000</span>),
+    io = require(<span class="string"><span class="delimiter">'</span><span class="content">socket.io</span><span class="delimiter">'</span></span>).listen(app),
+    gameSocket = io.of(<span class="string"><span class="delimiter">'</span><span class="content">/game</span><span class="delimiter">'</span></span>),
+    chatSocket = io.of(<span class="string"><span class="delimiter">'</span><span class="content">/chat</span><span class="delimiter">'</span></span>);</pre></div>
+</div>
+
+
+<p>Let&rsquo;s break this down line by line.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="keyword">var</span> express = require(<span class="string"><span class="delimiter">'</span><span class="content">express</span><span class="delimiter">'</span></span>),</pre></div>
+</div>
+
+
+<p>Nothing surprising here. I import the Express module, which is the web framework I am using.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>app = express.createServer().listen(<span class="integer">8000</span>),</pre></div>
+</div>
+
+
+<p>This line creates my Express web application. Since the focus of this post is Socket.IO, I don&rsquo;t show the routes that I set up here, but there are plenty of examples at <a href="http://www.expressjs.com">http://www.expressjs.com</a>.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>io = require(<span class="string"><span class="delimiter">'</span><span class="content">socket.io</span><span class="delimiter">'</span></span>).listen(app),</pre></div>
+</div>
+
+
+<p>There are two ways to create an instance of Socket.IO. The first is to allow it to create a native Node http server for you. If you call the <code>listen()</code> method on it without any arguments, it will default to a server listening on port 80. Otherwise, the server will listen on the port you specify.</p>
+
+<p>The second way is to pass it an existing server. This is the way in which I&rsquo;ve created my socket instance in the code example above, and probably the much more common usage of the library. Express is the example web server used in the Socket.IO documentation, but it would be interesting to see if it works just as well with other more obscure Node frameworks.</p>
+
+<p>So what actually gets stored into the <code>io</code> variable? The call to <code>listen()</code> creates a <code>Manager</code> object, which manages a lot of the interaction with clients, including exchanging handshakes, generating sessionIds, and listening for heartbeats to detect when a client has disconnected.  I did not spend too much time looking into these areas, however, since the part of Socket.IO that I was particularly interested in was the creation of namespaces.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>gameSocket = io.of(<span class="string"><span class="delimiter">'</span><span class="content">/game</span><span class="delimiter">'</span></span>),
+chatSocket = io.of(<span class="string"><span class="delimiter">'</span><span class="content">/chat</span><span class="delimiter">'</span></span>);</pre></div>
+</div>
+
+
+<p>This is where things get interesting. Remember that <code>io</code> is a <code>Manager</code> object. The <code>of</code> method takes a single string argument and creates a SocketNamespace object under that string or returns an existing one if it finds one.</p>
+
+<p>The <code>SocketNamespace</code> object inherits from Node&rsquo;s EventEmitter. Each client that connects to Socket.IO gets added as an event listener for the particular namespace through which the client is connected. Then, when the SocketNamespace needs to broadcast to all of its clients (or listeners), it emits the event and the clients' event handlers are invoked. That is a 50,000 foot view of how Socket.IO works!</p>
+
+<p>What happens if Socket.IO is used without any namespaces? If no namespace is specified:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="comment">// io.sockets is a SocketNamespace object</span>
+io.sockets.on(<span class="string"><span class="delimiter">'</span><span class="content">connection</span><span class="delimiter">'</span></span>, <span class="keyword">function</span> () {
+  ...
+});</pre></div>
+</div>
+
+
+<p>then Socket.IO defaults to the empty string namespace, <code>''</code>. The following would be equivalent to the previous code snippet:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="comment">// io.of('') is a SocketNamespace object</span>
+io.of(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>).on(<span class="string"><span class="delimiter">'</span><span class="content">connection</span><span class="delimiter">'</span></span>, <span class="keyword">function</span> () {
+  ...
+});</pre></div>
+</div>
+
+
+<p>After understanding what objects are being returned, I was able to figure out how to broadcast to all clients in a namespace:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="comment">// for the general namespace:</span>
+io.sockets.emit(<span class="string"><span class="delimiter">'</span><span class="content">newPlayer</span><span class="delimiter">'</span></span>, playerName);
+<span class="comment">// or for a specific namespace:</span>
+io.of(<span class="string"><span class="delimiter">'</span><span class="content">/chat</span><span class="delimiter">'</span></span>).emit(<span class="string"><span class="delimiter">'</span><span class="content">newPlayer</span><span class="delimiter">'</span></span>, playerName);</pre></div>
+</div>
+
+
+<p>This has been a very interesting experience in digging through the Socket.IO source. While I barely scratched the surface of this very useful module, the exposure to the source code has been more than enough to solidify my understanding of Socket.IO namespaces.</p>

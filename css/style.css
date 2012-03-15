@@ -1,0 +1,12 @@
+body,div,p,ul,ol,li,span,h1,h2,h3,h4,h5,h6{border:0;font-weight:normal;margin:0;padding:0;}
+body{background-color:#8b0000;padding:100px;text-align:center;}
+#main{color:#000;font-family:Georgia,Helvetica,Arial,sans-serif;margin:0 auto;text-align:center;width:800px;}#main .title{background-color:#fff;padding:20px;}
+#mainTitle,#mainSubtitle{}
+#mainTitle{font-size:72px;}
+#mainSubtitle{font-size:16px;}
+.blog-post{background-color:#fff;border:1px solid #333;list-style:none;margin:50px 0;padding:50px;text-align:left;-moz-box-shadow:5px 5px 10px #333;-o-box-shadow:5px 5px 10px #333;-webkit-box-shadow:5px 5px 10px #333;box-shadow:5px 5px 10px #333;}.blog-post a{color:#8b0000;text-decoration:none;}.blog-post a:hover{text-decoration:underline;}
+.blog-post .date{margin:20px 0;text-align:center;}
+.blog-post .CodeRay{background-color:#eee;padding:10px;}
+.blog-post .code{font-size:14px;}.blog-post .code pre{margin:0;padding:0;}
+.post-title{font-size:48px;text-align:center;}
+.post-body p{font-size:16px;line-height:24px;margin:20px 0;}
