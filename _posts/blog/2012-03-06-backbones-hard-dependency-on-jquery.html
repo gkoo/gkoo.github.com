@@ -5,11 +5,11 @@ category: blog
 ---
 <p>Backbone models and collections can be synced with the server via <a href="http://documentcloud.github.com/backbone/#Model-fetch">fetch</a>, <a href="http://documentcloud.github.com/backbone/#Model-save">save</a>, and <a href="http://documentcloud.github.com/backbone/#Model-destroy">destroy</a> methods. These methods all delegate to the <code>Backbone.sync</code> function, which wraps jQuery&rsquo;s <code>$.ajax</code> function and calls GET, POST, and DELETE methods for the respective Backbone model persistence methods. No big deal here. The only &ldquo;model persistence&rdquo; I really do is make a Posterous API call to fetch my blog posts via JSONP. I can just create a script element, assign the API URL in the script src attribute, and inject it myself.</p>
 
-<h2>History support via Backbone.Router</h2>
+<h4>History support via Backbone.Router</h4>
 
 <p>A call to <a href="http://documentcloud.github.com/backbone/#History-start">Backbone.History.start</a> uses jQuery to bind a <code>popstate</code> or <code>hashchange</code> event listener to the <code>window</code> object. <code>Backbone.History.stop</code> uses jQuery conversely to unbind these event listeners. No problem. I know how to add event listeners on DOM elements: <code>window.addEventListener</code>. Done.</p>
 
-<h2>DOM manipulation with Backbone.View</h2>
+<h4>DOM manipulation with Backbone.View</h4>
 
 <p>Here&rsquo;s my beef with Backbone. The documentation understates the extent to which Backbone Views depend on jQuery. One of the new features of Backbone is that all Views, in addition to the regular <code>el</code> property which represents the DOM element associated with the View, also get a <code>$el</code> property which holds the jQuery object for that DOM element. That sounds reasonable enough. In the past, I&rsquo;ve actually just assigned the jQuery object into the <code>el</code> object for convenience, so giving it its own property seems logical.</p>
 

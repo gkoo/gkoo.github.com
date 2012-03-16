@@ -1,12 +1,15 @@
 body,div,p,ul,ol,li,span,h1,h2,h3,h4,h5,h6{border:0;font-weight:normal;margin:0;padding:0;}
-body{background-color:#8b0000;padding:100px;text-align:center;}
-#main{color:#000;font-family:Georgia,Helvetica,Arial,sans-serif;margin:0 auto;text-align:center;width:800px;}#main .title{background-color:#fff;padding:20px;}
-#mainTitle,#mainSubtitle{}
-#mainTitle{font-size:72px;}
-#mainSubtitle{font-size:16px;}
-.blog-post{background-color:#fff;border:1px solid #333;list-style:none;margin:50px 0;padding:50px;text-align:left;-moz-box-shadow:5px 5px 10px #333;-o-box-shadow:5px 5px 10px #333;-webkit-box-shadow:5px 5px 10px #333;box-shadow:5px 5px 10px #333;}.blog-post a{color:#8b0000;text-decoration:none;}.blog-post a:hover{text-decoration:underline;}
+body{background-color:#8b0000;padding:20px 10px;text-align:center;}
+#main{color:#000;font-family:Georgia, Times New Roman, serif;margin:0 auto;max-width:800px;text-align:center;width:90%;}#main .title{background-color:#fff;padding:20px;}
+#mainTitle,#mainSubtitle{color:#fff;text-align:left;-moz-text-shadow:2px 2px #4b0000;-o-text-shadow:2px 2px #4b0000;-webkit-text-shadow:2px 2px #4b0000;text-shadow:2px 2px #4b0000;}
+#mainTitle{font-size:36px;}
+#mainSubtitle{font-size:14px;margin-left:100px;}
+#content{padding-top:10px;}
+@media only screen and (min-width:480px){#mainTitle{font-size:48px;} #mainSubtitle{font-size:16px;margin-left:125px;}}@media only screen and (min-width:800px){body{} #mainTitle{}}.blog-post{background-color:#fff;border:1px solid #333;list-style:none;margin:25px 0 75px;padding:25px;text-align:left;-moz-box-shadow:0 0 80px #4b0000;-o-box-shadow:0 0 80px #4b0000;-webkit-box-shadow:0 0 80px #4b0000;box-shadow:0 0 80px #4b0000;}.blog-post a{color:#8b0000;text-decoration:none;}.blog-post a:hover{text-decoration:underline;}
 .blog-post .date{margin:20px 0;text-align:center;}
-.blog-post .CodeRay{background-color:#eee;padding:10px;}
+.blog-post .CodeRay{background-color:#eee;padding:10px;overflow:auto;}
 .blog-post .code{font-size:14px;}.blog-post .code pre{margin:0;padding:0;}
-.post-title{font-size:48px;text-align:center;}
-.post-body p{font-size:16px;line-height:24px;margin:20px 0;}
+.post-title{font-size:24px;text-align:center;}
+.post-body h4{font-size:18px;}
+.post-body p{font-size:14px;line-height:24px;margin:20px 0;}
+@media only screen and (min-width:480px){.post-title{font-size:32px;} .post-body h4{font-size:24px;}}@media only screen and (min-width:600px){.post-title{font-size:36px;}}@media only screen and (min-width:800px){.blog-post{padding:50px;}.blog-post .code{font-size:14px;} .post-title{font-size:48px;} .post-body p{font-size:16px;}}

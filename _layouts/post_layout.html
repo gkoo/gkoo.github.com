@@ -1,11 +1,19 @@
 <html>
-  <head>
-    <title>{{ page.title }}</title>
-  </head>
+  {% include header.html %}
   <body>
-    <h1>hello post</h1>
-    <div class="blog-post">
-      {{ content }}
+    <div id="main">
+      {% include title.html %}
+      <div id="content">
+        <ul id="blog-posts">
+          <li class="blog-post">
+            <h3 class="post-title"><a href="{{ page.url }}">{{ page.title }}</a></h3>
+            <p class="date">{{ page.date | date_to_string }}</span>
+            <div class="post-body">
+              {{ page.content }}
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
