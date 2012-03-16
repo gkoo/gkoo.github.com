@@ -1,4 +1,4 @@
 _site
 _config.yml.default
 css/Roboto_Hinted
-compilecss.sh
+compile_and_push.sh
