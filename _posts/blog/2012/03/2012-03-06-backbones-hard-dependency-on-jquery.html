@@ -3,6 +3,15 @@ layout: post
 title: Backbone's Hard Dependency on jQuery
 category: blog
 ---
+<p>There have been a <a href="http://snook.ca/archives/javascript/going-simple-with-javascript">couple</a> of <a href="http://mike.teczno.com/notes/bandwidth.html">posts</a> on Hacker News recently about reducing page bloat by cutting out jQuery.</p>
+
+<p>I thought about my homepage, which included Underscore, Backbone, and jQuery. I realized that the features of jQuery that I use could actually be replaced by simple vanilla Javascript. After all, I mainly use jQuery to add and remove classes, and Backbone&rsquo;s only hard dependency is Underscore, right? I&rsquo;m not so worried about IE6 users, since I can probably count the number of monthly visitors to my site on one hand&mdash;one of which is me&mdash;and I doubt that they use legacy browsers. So I decided to do some spring cleaning and get rid of the magic dollar sign.</p>
+
+<p>As it turns out, Backbone relies on jQuery for quite a lot of its functionality as well. Maybe it was naive of me to think that Backbone implemented its own event delegation when jQuery had already invented that wheel. But let&rsquo;s take a look at what Backbone actually needs jQuery for.</p>
+
+<p class="quote">For RESTful persistence, history support via Backbone.Router and DOM manipulation with Backbone.View, include json2.js, and either jQuery ( > 1.4.2) or Zepto.</p>
+
+<h2>RESTful persistence</h2>
 <p>Backbone models and collections can be synced with the server via <a href="http://documentcloud.github.com/backbone/#Model-fetch">fetch</a>, <a href="http://documentcloud.github.com/backbone/#Model-save">save</a>, and <a href="http://documentcloud.github.com/backbone/#Model-destroy">destroy</a> methods. These methods all delegate to the <code>Backbone.sync</code> function, which wraps jQuery&rsquo;s <code>$.ajax</code> function and calls GET, POST, and DELETE methods for the respective Backbone model persistence methods. No big deal here. The only &ldquo;model persistence&rdquo; I really do is make a Posterous API call to fetch my blog posts via JSONP. I can just create a script element, assign the API URL in the script src attribute, and inject it myself.</p>
 
 <h4>History support via Backbone.Router</h4>

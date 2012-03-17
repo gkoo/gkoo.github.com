@@ -18,3 +18,20 @@
   -webkit-text-shadow: @x @y @color;
   text-shadow: @x @y @color;
 }
+
+.transition(@property, @duration: .5s) {
+  -moz-transition:    @property @duration ease-out;
+  -ms-transition:     @property @duration ease-out;
+  -o-transition:      @property @duration ease-out;
+  -webkit-transition: @property @duration ease-out;
+  transition:         @property @duration ease-out;
+}
+
+.white-box {
+  background-color: #fff;
+  border: 3px solid #ccc;
+  list-style: none;
+  margin: 25px 0 75px;
+  padding: 25px 10px;
+  text-align: left;
+}

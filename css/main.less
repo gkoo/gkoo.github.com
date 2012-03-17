@@ -18,7 +18,6 @@ body {
   margin: 0 auto;
   max-width: 800px;
   text-align: center;
-  width: 90%;
 
   .title {
     background-color: #fff;
@@ -26,39 +25,68 @@ body {
   }
 }
 
-#mainTitle, #mainSubtitle {
-  color: #fff;
-  text-align: left;
+header {
   .text-shadow(2px,2px,#4b0000);
+  a {
+    color: #666;
+    text-decoration: none;
+    .transition(color, .2s);
+
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
-#mainTitle {
+#sections, #mainSubtitle {
+  color: #fff;
+  text-align: left;
+}
+
+#sections {
   font-size: 36px;
+  list-style: none;
+
+  li {
+    float: left;
+    /*margin: 0 20px 0 0;*/
+    &.selected a {
+      color: #eedc82;
+    }
+  }
 }
 
 #mainSubtitle {
   font-size: 14px;
-  margin-left: 100px;
+  clear: both;
+  margin-left: 50px;
 }
 
 #content {
   padding-top: 10px;
 }
 
+#projects, #contact {
+  .white-box;
+}
+
 @media only screen and (min-width: 480px) {
-  #mainTitle {
+  #sections {
     font-size: 48px;
+  }
+  #projects, #contact {
+    padding: 25px;
   }
   #mainSubtitle {
     font-size: 16px;
-    margin-left: 125px;
   }
-}
-@media only screen and (min-width: 800px) {
-  body {
-    /*padding: 100px;*/
+  #main {
+    width: 90%;
   }
-  #mainTitle {
-    /*font-size: 72px;*/
+  #nav {
+    float: right;
+    li {
+      font-size: 24px;
+    }
   }
 }

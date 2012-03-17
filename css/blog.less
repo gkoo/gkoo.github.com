@@ -1,10 +1,5 @@
 .blog-post {
-  background-color: #fff;
-  border: 3px solid #ccc;
-  list-style: none;
-  margin: 25px 0 75px;
-  padding: 25px;
-  text-align: left;
+  .white-box;
   .box-shadow(0,0,80px,#4b0000);
 
   a {
@@ -21,18 +16,40 @@
     text-align: center;
   }
 
-  /* For my two Posterous posts... */
+  /* Syntax highlighting with CodeRay */
   .CodeRay {
-    background-color: #eee;
+    background-color: #f3f3f3;
     padding: 10px;
     overflow: auto;
   }
   .code {
+    font-size: 14px;
     pre {
       margin: 0;
       padding: 0;
     }
-    font-size: 14px;
+    .tag, .keyword {
+      font-weight: bold;
+    }
+    .tag, .keyword {
+      color: #3875d7;
+    }
+    .attribute-name {
+      /*color: #ff3b3b;*/
+    }
+    .comment {
+      color: #a0b0c0;
+      font-style: italic;
+    }
+    .content {
+      color: #4070a0;
+    }
+    .function {
+      color: #003e81;
+    }
+    .integer, .predefined-constant {
+      color: #ff3b3b;
+    }
   }
 }
 
@@ -50,9 +67,17 @@
     line-height: 24px;
     margin: 20px 0;
   }
+
+  .quote {
+    background-color: #eee;
+    padding: 10px 60px;
+  }
 }
 
 @media only screen and (min-width: 480px) {
+  .blog-post {
+    padding: 25px;
+  }
   .post-title {
     font-size: 32px;
   }
