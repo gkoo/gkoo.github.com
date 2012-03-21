@@ -22,8 +22,9 @@ header{-moz-text-shadow:2px 2px #4b0000;-o-text-shadow:2px 2px #4b0000;-webkit-t
 .post-title{font-size:24px;text-align:center;}
 .post-body h4{font-size:18px;}
 .post-body p{font-size:14px;line-height:24px;margin:20px 0;}
-.post-body .quote{background-color:#eee;padding:10px 60px;}
-@media only screen and (min-width:480px){.blog-post{padding:25px;} .post-title{font-size:32px;} .post-body h4{font-size:24px;}}@media only screen and (min-width:600px){.post-title{font-size:36px;}}@media only screen and (min-width:800px){.blog-post{padding:50px;}.blog-post .code{font-size:14px;} .post-title{font-size:48px;} .post-body p{font-size:16px;}}
+.post-body .image{text-align:center;}.post-body .image img{margin:20px auto;max-width:100%;}
+.post-body .quote{background-color:#eee;padding:10px 20px;}
+@media only screen and (min-width:480px){.blog-post{padding:25px;} .post-title{font-size:32px;} .post-body h4{font-size:24px;}}@media only screen and (min-width:600px){.post-title{font-size:36px;} .post-body .quote{padding:10px 60px;}}@media only screen and (min-width:800px){.blog-post{padding:50px;}.blog-post .code{font-size:14px;} .post-title{font-size:48px;} .post-body p{font-size:16px;}}
 #contact ul{list-style:none;}
 #contact li{float:left;text-align:center;}#contact li:hover{-moz-box-shadow:2px 2px 2px #cccccc;-o-box-shadow:2px 2px 2px #cccccc;-webkit-box-shadow:2px 2px 2px #cccccc;box-shadow:2px 2px 2px #cccccc;}
 #contact a{display:block;padding:12px 22px;}#contact a:hover{border:2px solid #ccc;padding:9px 20px 11px;}
