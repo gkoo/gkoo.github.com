@@ -3,8 +3,8 @@ body{background-color:#fff;color:#000;}
 a{color:#14a;text-decoration:none;}
 #main{margin:20px auto;text-align:center;width:800px;}
 #main.blog-post .homeBtn{display:block;}
-.homeBtn{display:none;float:left;width:60px;height:60px;}.homeBtn.show{display:block;}
-.homeBtn.sectionBtn{position:static;margin:0;}.homeBtn.sectionBtn .title{font-size:16px;width:60px;height:60px;}
+.homeBtn{display:none;float:left;width:120px;height:120px;}.homeBtn.show{display:block;}
+.homeBtn.sectionBtn{position:static;margin:0;}.homeBtn.sectionBtn .title{font-size:24px;}
 #sectionBtnWrapper{margin:25px auto;position:relative;width:280px;height:280px;}#sectionBtnWrapper .sectionBtn:nth-child(1){top:0;left:0;}
 #sectionBtnWrapper .sectionBtn:nth-child(2){top:0;left:140px;}
 #sectionBtnWrapper .sectionBtn:nth-child(3){top:140px;left:0;}
@@ -26,7 +26,7 @@ a{color:#14a;text-decoration:none;}
 #main.blog-post .section{display:block;}
 .section{display:none;}
 .section.show{display:block;}
-.sectionTitle{float:left;font-size:52px;line-height:64px;margin:0 auto 50px 20px;}
+.sectionTitle{float:left;font-size:52px;line-height:120px;margin:0 auto 50px 20px;}
 .sectionContent{clear:left;margin-top:1px;text-align:left;}.sectionContent .title{font-size:28px;margin:10px 0;}.sectionContent .title a{text-decoration:none;}
 .sectionContent .title a:hover{text-decoration:underline;}
 .sectionContent p{line-height:24px;}
