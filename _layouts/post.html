@@ -1,18 +1,12 @@
+<!DOCTYPE html>
 <html>
   {% include header.html %}
   <body>
-    <div id="main">
-      {% include title.html %}
-      <div id="content">
-        <ul id="blog-posts">
-          <li class="blog-post whitebox">
-            <h3 class="post-title"><a href="{{ page.url }}">{{ page.title }}</a></h3>
-            <p class="date">{{ page.date | date_to_string }}</p>
-            <div class="post-body">
-              {{ page.content }}
-            </div>
-          </li>
-        </ul>
+    <div id="main" class="blog-post">
+      {% include home_button.html %}
+
+      <div id="content show">
+        {% include blog.html %}
       </div>
     </div>
     {% include ga.html %}

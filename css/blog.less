@@ -1,117 +1,48 @@
-.blog-post {
-  a {
-    color: @dark-red;
+.blog {
+  .box {
+    .post-date {
+      display: none;
+    }
 
-    &:hover {
-      text-decoration: underline;
+    h2 {
+      font-size: 24px;
+      /*font-weight: bold;*/
+      margin-top: 25px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+    .CodeRay {
+      background-color: #eee;
+      padding: 10px;
+    }
+    .code {
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      font-size: 14px;
     }
   }
-
-  .date {
-    margin: 20px 0;
+  h3 {
+    font-size: 28px;
     text-align: center;
   }
 
-  /* Syntax highlighting with CodeRay */
-  .CodeRay {
-    background-color: #f3f3f3;
-    padding: 10px;
-    overflow: auto;
-  }
-  .code {
-    font-size: 14px;
-    pre {
-      margin: 0;
-      padding: 0;
-    }
-    .tag, .keyword {
-      font-weight: bold;
-    }
-    .tag, .keyword {
-      color: #3875d7;
-    }
-    .attribute-name {
-      /*color: #ff3b3b;*/
-    }
-    .comment {
-      color: #a0b0c0;
-      font-style: italic;
-    }
-    .content {
-      color: #4070a0;
-    }
-    .function {
-      color: #003e81;
-    }
-    .integer, .predefined-constant {
-      color: #ff3b3b;
-    }
-  }
-}
-
-.post-title {
-  font-size: 24px;
-  text-align: center;
-}
-
-.post-body {
-  h4 {
-    font-size: 18px;
-  }
-  p {
-    font-size: 14px;
-    line-height: 24px;
-    margin: 20px 0;
+  .date {
+    display: block;
+    color: #999;
+    font-size: 13px;
+    text-align: center;
   }
 
   .image {
     text-align: center;
+
     img {
-      margin: 20px auto;
+      margin: 0 auto;
       max-width: 100%;
-    }
-  }
-
-  .quote {
-    background-color: #eee;
-    padding: 10px 20px;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  .blog-post {
-    padding: 25px;
-  }
-  .post-title {
-    font-size: 32px;
-  }
-  .post-body {
-    h4 {
-      font-size: 24px;
-    }
-  }
-}
-@media only screen and (min-width: 600px) {
-  .post-title {
-    font-size: 36px;
-  }
-  .post-body .quote {
-    padding: 10px 60px;
-  }
-}
-@media only screen and (min-width: 800px) {
-  .blog-post {
-    padding: 50px;
-    .code {
-      font-size: 14px;
-    }
-  }
-  .post-title {
-    font-size: 48px;
-  }
-  .post-body {
-    p {
-      font-size: 16px;
     }
   }
 }
