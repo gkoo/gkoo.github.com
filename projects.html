@@ -1,8 +1,15 @@
 ---
 layout: main
-page: projects
-title: gordon koo - projects
+title: gordon koo
+show: projects
 ---
-<div id="projects" class="whitebox">
-  <h3>Coming soon... I am currently porting over my site to GitHub. Thanks for your patience!</h3>
+
+<div id="content" style="display: block;">
+  {% include home_button.html %}
+  {% include about.html %}
+  {% include blog.html %}
+  {% include projects.html %}
+  {% include misc.html %}
 </div>
+
+{% include nav.html %}

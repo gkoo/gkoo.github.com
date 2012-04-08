@@ -2,3 +2,9 @@ _site
 _config.yml.default
 css/Roboto_Hinted
 compile_and_push.sh
+
+js/backbone-events.js
+
+js/backbone.js
+
+minify.sh

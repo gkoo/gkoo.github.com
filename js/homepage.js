@@ -1,6 +1,6 @@
-// ====
-// BLOG
-// ====
+// =======
+// HELPERS
+// =======
 
 var addClass = function (el, newClass) {
   if (el.className.indexOf(newClass) < 0) {
@@ -40,7 +40,6 @@ ContentView = function () {
       this.showSection = this.showSection.bind(this);
       this.hide = this.hide.bind(this);
       this.goHome = this.goHome.bind(this);
-      console.log(this);
       this.id = this.el.getAttribute('id');
 
       this.homeBtn = document.querySelector('.homeBtn');
@@ -70,128 +69,129 @@ ContentView = function () {
 
     goHome: function(evt) {
       evt.preventDefault();
-      this.trigger('goHome');
+      eventManager.trigger('navigate', { section: '', push: true });
     }
   };
   return view.initialize();
 },
 
-NavView = Backbone.View.extend({
-  el: document.getElementById('sectionBtnWrapper'),
+NavView = function () {
+  var view = {
+    el: document.getElementById('sectionBtnWrapper'),
 
-  initialize: function() {
-    var el = this.el;
-    _.extend(Backbone.Events);
+    initialize: function() {
+      var el = this.el;
+      _.extend(this, Backbone.Events);
 
-    this.goToSection = this.goToSection.bind(this);
-    this.hide = this.hide.bind(this);
-    this.show = this.show.bind(this);
+      this.goToSection = this.goToSection.bind(this);
+      this.hide = this.hide.bind(this);
+      this.show = this.show.bind(this);
 
-    this.id = el.getAttribute('id');
-    this.el.addEventListener('click', this.goToSection);
+      this.id = el.getAttribute('id');
+      this.el.addEventListener('click', this.goToSection);
 
-    // Prevent CSS3 transitions until page is loaded. Sort of hacky.
-    setTimeout(function() {
-      addClass(el, 'loaded');
-    }, 100);
-  },
+      // Prevent CSS3 transitions until page is loaded. Sort of hacky.
+      setTimeout(function() {
+        addClass(el, 'loaded');
+      }, 100);
 
-  goToSection: function(evt) {
-    var target = evt.target,
-        parent;
-    if (!hasClass(target, 'title')) {
-      parent = target.parentElement;
-      if (hasClass(parent, 'title')) {
-        target = parent;
+      return this;
+    },
+
+    goToSection: function(evt) {
+      var target = evt.target,
+          parent, page;
+      if (!hasClass(target, 'title')) {
+        parent = target.parentElement;
+        if (hasClass(parent, 'title')) {
+          target = parent;
+        }
       }
+      evt.preventDefault();
+      page = target.getAttribute('data-section');
+      eventManager.trigger('navigate', { section: page, push: true });
+    },
+
+    show: function () {
+      removeClass(this.el, 'faded');
+      this.fadingTimeout = window.setTimeout((function() {
+        removeClass(this.el, 'fading');
+      }).bind(this), 20);
+    },
+
+    hide: function (anim_duration) {
+      addClass(this.el, 'fading');
+      this.fadingTimeout = window.setTimeout((function() {
+        addClass(this.el, 'faded');
+      }).bind(this), anim_duration);
     }
-    evt.preventDefault();
-    page = target.getAttribute('data-section');
-    this.trigger('section:navigate', page);
-  },
+  };
 
-  show: function () {
-    console.log('removing faded');
-    removeClass(this.el, 'faded');
-    this.fadingTimeout = window.setTimeout((function() {
-      console.log('removing fading');
-      removeClass(this.el, 'fading');
-    }).bind(this), 20);
-  },
+  return view.initialize()
+},
 
-  hide: function (anim_duration) {
-    addClass(this.el, 'fading');
-    this.fadingTimeout = window.setTimeout((function() {
-      addClass(this.el, 'faded');
-    }).bind(this), anim_duration);
-  }
-}),
+eventManager = (function () {
+  _.extend(this, Backbone.Events);
+  return this;
+})(),
 
-HomepageRouter = Backbone.Router.extend({
-  initialize: function() {
-    _.extend(Backbone.Events);
-  },
-  routes: {
-    '': 'home',
-    home: 'home',
-    about: 'about',
-    blog: 'blog',
-    projects: 'projects',
-    misc: 'misc'
-  },
-  home: function() {
-    this.trigger('route', '');
-  },
-  about: function() {
-    this.trigger('route', 'about');
-  },
-  blog: function() {
-    this.trigger('route', 'blog');
-  },
-  projects: function() {
-    this.trigger('route', 'projects');
-  },
-  misc: function() {
-    this.trigger('route', 'misc');
-  }
-}),
+historyManager = (function () {
+  _.extend(this, Backbone.Events);
+  window.addEventListener('popstate', function (evt) {
+    var section;
+    if (evt && evt.state && evt.state.section) {
+      section = evt.state.section === 'home' ? '' : evt.state.section;
+      eventManager.trigger('navigate', { section: section, push: false });
+    }
+  });
+  this.initialize = function (initialPage, path) {
+    history.replaceState({ section: initialPage }, 'gordon koo', path);
+  };
+  this.navigateTo = function (section) {
+    var path = section ? section + '.html' : '/';
+    section = section || 'home';
+    history.pushState({ section: section }, "gordon koo", path);
+  };
+  this.hasPushState = typeof history.pushState !== 'undefined';
+  return this;
+})(),
 
 Homepage = function(initialPage) {
   this.sectionBtnWrapper = document.getElementById('sectionBtnWrapper');
 
-  this.changeSection = (function(section) {
-    var ANIM_DURATION = 400;
+  // This function does the actual changing of the view
+  this.changeSection = (function(data) {
+    var ANIM_DURATION = 400,
+        section = data.section,
+        doPush = data.push,
+        path;
+
+    if (!historyManager.hasPushState) {
+      window.location = section ? section + '.html' : '/';
+      return;
+    }
     if (section) {
+      // Show content
       this.navView.hide(ANIM_DURATION);
       setTimeout((function() {
-        console.log('showsection: ' + section);
         this.contentView.showSection(section);
       }).bind(this), ANIM_DURATION);
     }
     else {
-      // show nav view
+      // Show nav view
       this.contentView.hide();
       this.navView.show();
     }
 
-    this.router.navigate(section);
+    if (doPush) { historyManager.navigateTo(section); }
   }).bind(this);
 
-  this.setupEvents = function() {
-    this.navView.on('section:navigate', this.changeSection);
-    this.contentView.on('goHome', this.changeSection);
-    this.router.on('route', this.changeSection);
-  };
-
   this.init = function() {
-    this.router = new HomepageRouter();
-    // only show navView if user didn't navigate directly to a section
+    var path = initialPage === 'home' ? '/' : '/' + initialPage + '.html';
     this.navView = new NavView();
     this.contentView = new ContentView();
-    //this.blog = new Blog(initialPage === 'blog');
-    this.setupEvents();
-
-    Backbone.history.start();
+    historyManager.initialize(initialPage, path);
+    eventManager.bind('navigate', this.changeSection);
   };
 
   this.init();
@@ -209,5 +209,9 @@ if (typeof Function.bind === 'undefined') {
 }
 
 document.body.onload = function () {
-  var homepage = new Homepage('home');
+  var homepage;
+  if (typeof currPage === 'undefined') {
+    currPage = 'home';
+  }
+  homepage = new Homepage(currPage);
 };
