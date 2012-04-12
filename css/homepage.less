@@ -1,32 +1,4 @@
-@btnTransitionProperties: background-color, opacity, width, height, left, top;
-@btnTransitionDuration: .5s;
-@btnTransitionTiming: ease-out;
-
-.btn-transition() {
-  -moz-transition-property: @btnTransitionProperties;
-  -moz-transition-duration: @btnTransitionDuration;
-  -moz-transition-timing-function: @btnTransitionTiming;
-
-  -webkit-transition-property: @btnTransitionProperties;
-  -webkit-transition-duration: @btnTransitionDuration;
-  -webkit-transition-timing-function: @btnTransitionTiming;
-
-  -o-transition-property: @btnTransitionProperties;
-  -o-transition-duration: @btnTransitionDuration;
-  -o-transition-timing-function: @btnTransitionTiming;
-
-  transition-property: @btnTransitionProperties;
-  transition-duration: @btnTransitionDuration;
-  transition-timing-function: @btnTransitionTiming;
-}
-
-.transition(@property, @duration: .5s) {
-  -moz-transition:    @property @duration ease-out;
-  -ms-transition:     @property @duration ease-out;
-  -o-transition:      @property @duration ease-out;
-  -webkit-transition: @property @duration ease-out;
-  transition:         @property @duration ease-out;
-}
+@import "mixins";
 
 /* RESET */
 body, h1, h2, h3, h4, h5, h6, div, ul, ol, li, p {
@@ -212,7 +184,6 @@ a {
 @import "hp_section";
 @import "about";
 @import "blog";
-/*@import "projects";*/
 @import "misc";
 
 @media only screen and (min-height: 600px) {
@@ -241,10 +212,12 @@ a {
   }
 }
 */
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 600px) {
   #main {
-    padding: 0;
+    padding: 30px;
   }
+}
+@media only screen and (min-width: 860px) {
   #content {
     width: 800px;
   }

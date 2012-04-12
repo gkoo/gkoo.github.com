@@ -13,9 +13,9 @@
     p {
       margin: 10px 0 30px;
     }
-    .CodeRay {
+    .CodeRay, blockquote {
       background-color: #eee;
-      padding: 10px;
+      padding: 40px;
     }
     .code {
       pre {
@@ -24,10 +24,21 @@
       }
       font-size: 14px;
     }
+    ol, li {
+      list-style: decimal outside;
+    }
+
+    ol {
+      padding: 20px;
+    }
   }
   h3 {
     font-size: 28px;
     text-align: center;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   .date {
@@ -42,7 +53,11 @@
 
     img {
       margin: 0 auto;
-      max-width: 100%;
+      max-width: 90%;
+
+      &.round {
+        .rounded-corners-all(20px);
+      }
     }
   }
 }

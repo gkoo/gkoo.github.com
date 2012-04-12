@@ -1,3 +1,7 @@
+@btnTransitionProperties: background-color, opacity, width, height, left, top;
+@btnTransitionDuration: .5s;
+@btnTransitionTiming: ease-out;
+
 .rounded-corners-all(@radius:5px) {
   -moz-border-radius: @radius;
   -o-border-radius: @radius;
@@ -17,6 +21,24 @@
   -o-text-shadow: @x @y @color;
   -webkit-text-shadow: @x @y @color;
   text-shadow: @x @y @color;
+}
+
+.btn-transition() {
+  -moz-transition-property: @btnTransitionProperties;
+  -moz-transition-duration: @btnTransitionDuration;
+  -moz-transition-timing-function: @btnTransitionTiming;
+
+  -webkit-transition-property: @btnTransitionProperties;
+  -webkit-transition-duration: @btnTransitionDuration;
+  -webkit-transition-timing-function: @btnTransitionTiming;
+
+  -o-transition-property: @btnTransitionProperties;
+  -o-transition-duration: @btnTransitionDuration;
+  -o-transition-timing-function: @btnTransitionTiming;
+
+  transition-property: @btnTransitionProperties;
+  transition-duration: @btnTransitionDuration;
+  transition-timing-function: @btnTransitionTiming;
 }
 
 .transition(@property, @duration: .5s) {
