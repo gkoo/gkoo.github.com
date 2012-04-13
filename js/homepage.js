@@ -24,6 +24,7 @@ removeClass = function (el, classToRemove) {
 },
 
 hasClass = function (el, className) {
+  // TODO: fix this function
   return (el.className.indexOf(className) != -1);
 },
 
