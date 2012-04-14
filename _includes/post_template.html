@@ -1,7 +1,14 @@
+{% if page.layout == 'post' %}
+{% assign post = page %}
+{% endif %}
 <li class="box">
   <h3><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h3>
   <span class="date">{{ post.date | date_to_string }}</span>
   <article>
-    {{ post.content }}
+    {% if page.layout == 'post' %}
+      {{ content }}
+    {% else %}
+      {{ post.content }}
+    {% endif %}
   </article>
 </li>
