@@ -149,7 +149,7 @@ historyManager = (function () {
     history.replaceState({ section: initialPage }, 'gordon koo', path);
   };
   this.navigateTo = function (section) {
-    var path = section ? section + '.html' : '/';
+    var path = section ? section : '/';
     section = section || 'home';
     history.pushState({ section: section }, "gordon koo", path);
   };
@@ -168,7 +168,7 @@ Homepage = function(initialPage) {
         path;
 
     if (!historyManager.hasPushState) {
-      window.location = section ? section + '.html' : '/';
+      window.location = section ? section : '/';
       return;
     }
     if (section) {
@@ -188,7 +188,7 @@ Homepage = function(initialPage) {
   }).bind(this);
 
   this.init = function() {
-    var path = initialPage === 'home' ? '/' : '/' + initialPage + '.html';
+    var path = initialPage === 'home' ? '/' : '/' + initialPage;
     this.navView = new NavView();
     this.contentView = new ContentView();
     historyManager.initialize(initialPage, path);
