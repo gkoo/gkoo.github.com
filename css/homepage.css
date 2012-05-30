@@ -40,7 +40,7 @@ a{color:#14a;text-decoration:none;}
 @media only screen and (min-width:600px){p.last{padding:0 0 0 116px;}}.blog .box{text-align:center;}.blog .box .post-date{display:none;}
 .blog .box h2{font-size:24px;margin-top:25px;}
 .blog .box p{margin:10px 0 30px;text-align:left;}
-.blog .box .CodeRay,.blog .box blockquote{background-color:#eee;padding:40px;}
+.blog .box .CodeRay,.blog .box blockquote{background-color:#eee;padding:40px;text-align:left;}
 .blog .box .code{font-size:14px;}.blog .box .code pre{margin:0;padding:0;}
 .blog .box ol,.blog .box li{list-style:decimal outside;}
 .blog .box ol{padding:20px;}
