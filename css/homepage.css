@@ -37,9 +37,9 @@ a{color:#14a;text-decoration:none;}
 .about.section img{width:96px;}
 .about.section #img-guitar{float:left;margin:0 20px 20px 0;}
 .about.section #img-me,.about.section #img-firebug{float:left;margin:0 20px 20px 0;}
-@media only screen and (min-width:600px){p.last{padding:0 0 0 116px;}}.blog .box .post-date{display:none;}
+@media only screen and (min-width:600px){p.last{padding:0 0 0 116px;}}.blog .box{text-align:center;}.blog .box .post-date{display:none;}
 .blog .box h2{font-size:24px;margin-top:25px;}
-.blog .box p{margin:10px 0 30px;}
+.blog .box p{margin:10px 0 30px;text-align:left;}
 .blog .box .CodeRay,.blog .box blockquote{background-color:#eee;padding:40px;}
 .blog .box .code{font-size:14px;}.blog .box .code pre{margin:0;padding:0;}
 .blog .box ol,.blog .box li{list-style:decimal outside;}
@@ -47,5 +47,6 @@ a{color:#14a;text-decoration:none;}
 .blog h3{font-size:28px;text-align:center;}.blog h3 a{text-decoration:none;}
 .blog .date{display:block;color:#999;font-size:13px;text-align:center;}
 .blog .image{text-align:center;}.blog .image img{margin:0 auto;max-width:90%;}.blog .image img.round{-moz-border-radius:20px;-o-border-radius:20px;-webkit-border-radius:20px;border-radius:20px;}
+.blog iframe{margin:0 auto;}
 .misc h3{text-align:center;}
 @media only screen and (min-height:600px){#sectionBtnWrapper{margin-top:100px;} #content{}}@media only screen and (min-height:800px){#sectionBtnWrapper{margin-top:200px;} #content{}}@media only screen and (min-width:600px){#main{padding:30px;}}@media only screen and (min-width:860px){#content{width:800px;}}
