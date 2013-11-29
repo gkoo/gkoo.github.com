@@ -1,22 +1,19 @@
-<ul id="sectionBtnWrapper"{% if page.show != "home" %} class="loaded fading faded"{% endif %}>
-  <li class="sectionBtn">
-    <a class="title" href="/about" data-section="about">
-      <span>About</span>
-    </a>
-  </li>
-  <li class="sectionBtn">
-    <a class="title" href="/blog" data-section="blog">
-      <span>Blog</span>
-    </a>
-  </li>
-  <li class="sectionBtn">
-    <a class="title" href="/projects" data-section="projects">
-      <span>Projects</span>
-    </a>
-  </li>
-  <li class="sectionBtn">
-    <a class="title" href="/misc" data-section="misc">
-      <span>Misc</span>
-    </a>
-  </li>
-</ul>
+<div class="navbar" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Gordon Koo</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>

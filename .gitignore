@@ -8,3 +8,4 @@ js/backbone-events.js
 js/backbone.js
 
 minify.sh
+bower_components

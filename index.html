@@ -5,12 +5,8 @@ show: home
 debug: false
 ---
 
-<div id="content">
-  {% include home_button.html %}
-  {% include about.html %}
-  {% include blog.html %}
-  {% include projects.html %}
-  {% include misc.html %}
-</div>
-
-{% include nav.html %}
+<ul class="list-unstyled">
+  {% for post in site.categories.blog %}
+    {% include post_template.html %}
+  {% endfor %}
+</ul>
