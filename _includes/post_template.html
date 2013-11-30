@@ -2,13 +2,15 @@
 {% assign post = page %}
 {% endif %}
 <li class="post box">
-  <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-  <h4><small>{{ post.date | date_to_string }}</small></h4>
-  <article>
-    {% if page.layout == 'post' %}
-      {{ content }}
-    {% else %}
-      {{ post.content }}
-    {% endif %}
-  </article>
+  <div class="inner-box">
+    <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+    <h4><small>{{ post.date | date_to_string }}</small></h4>
+    <article>
+      {% if page.layout == 'post' %}
+        {{ content }}
+      {% else %}
+        {{ post.content }}
+      {% endif %}
+    </article>
+  </div>
 </li>

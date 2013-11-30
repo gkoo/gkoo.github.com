@@ -3,18 +3,26 @@ body {
   background-size: cover;
 }
 .box {
-  border: 3px solid #333;
+  background-color: #eee;
   margin: 40px 0;
-  padding: 20px 40px;
+  padding: 10px;
+
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
 }
-.post {
+.inner-box {
   background-color: #fff;
+  padding: 20px 40px;
+
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
 }
 .post img {
   max-width: 100%;
 }
 #side {
-  background-color: #fff;
   margin: 40px 0;
   padding: 40px auto 20px;
   text-align: center;
@@ -23,6 +31,7 @@ body {
   border: 3px solid #333;
   width: 100px;
   height: 100px;
+
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
