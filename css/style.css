@@ -24,8 +24,10 @@ body {
 }
 #side {
   margin: 40px 0;
-  padding: 40px auto 20px;
   text-align: center;
+}
+#side .inner-box {
+  padding: 20px 0;
 }
 #side img {
   border: 3px solid #333;
@@ -35,4 +37,14 @@ body {
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
+}
+@media (min-width: 992px) {
+  #side {
+    width: 280px;
+  }
+}
+@media (min-width: 1200px) {
+  #side {
+    width: 340px;
+  }
 }
