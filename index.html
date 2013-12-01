@@ -6,7 +6,17 @@ debug: false
 ---
 
 <ul class="list-unstyled">
-  {% for post in site.categories.blog %}
+  {% for post in paginator.posts %}
     {% include post_template.html %}
   {% endfor %}
 </ul>
+
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="/page{{ paginator.previous_page }}" class="btn btn-default">Previous</a>
+  {% endif %}
+  {% if paginator.next_page %}
+    <a href="/page{{ paginator.next_page }}" class="btn btn-default">Next</a>
+  {% endif %}
+</div>
