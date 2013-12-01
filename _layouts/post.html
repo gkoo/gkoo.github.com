@@ -2,13 +2,16 @@
 <html>
   {% include head.html %}
   <body>
-    <div id="main" class="blog-post">
-      <div id="content" class="show">
-        {% include home_button.html %}
-        {% include blog.html %}
-        {% include disqus.html %}
+    <div class="container">
+      <div class="row">
+        {% include sidebar.html %}
+        <div id="main" class="col-md-8">
+          <ul class="list-unstyled">
+            {% include post_template.html %}
+          </ul>
+        </div>
       </div>
     </div>
-    {% include ga.html %}
+    {% include foot.html %}
   </body>
 </html>
