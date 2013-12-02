@@ -40,6 +40,7 @@ body {
 }
 @media (min-width: 992px) {
   #side {
+    position: fixed;
     width: 280px;
   }
 }
