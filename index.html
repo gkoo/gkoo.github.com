@@ -1,26 +1,46 @@
----
-layout: main
-title: gordon koo
-show: home
-debug: false
----
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gordon Koo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div id="marquee">
+      <div class="container">
+        <h1 class="site-title text-center">Gordon Koo</h1>
+        <h4 class="text-center">A coder, musician, and general-purpose do-er, for fun and profit.</h4>
+        <div class="implement-section row">
+          <div class="col-md-8 col-md-offset-2">
+            <form action="">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-9">
+                    <input type="text" id="implement-input" class="form-control" placeholder="What needs implementing?">
+                  </div>
+                  <div class="col-md-3">
+                    <button id="implement-button" class="btn btn-default">
+                      Implement it!
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Hello, World!</h2>
+      <p>My name is Gordon. If you're reading this, you've caught me while I'm updating my site. Congratulations!</p>
 
-<ul class="list-unstyled">
-  {% for post in paginator.posts %}
-    {% include post_template.html %}
-  {% endfor %}
-</ul>
+      <h2>Our story</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-<!-- Pagination links -->
-<div class="pagination">
-  {% if paginator.previous_page %}
-    {% if paginator.previous_page == 1 %}
-      <a href="/" class="btn btn-default">Previous</a>
-    {% else %}
-      <a href="{{ paginator.previous_page_path }}" class="btn btn-default">Previous</a>
-    {% endif %}
-  {% endif %}
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}" class="btn btn-default">Next</a>
-  {% endif %}
-</div>
+      <!--<h2>Some satisfied customers</h2>-->
+      <!--<p>customers go here</p>-->
+      <script src="js/jquery.min.js"></script>
+    </div>
+  </body>
+</html>

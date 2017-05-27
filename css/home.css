@@ -1,0 +1,21 @@
+#marquee {
+  background-color: #0d61e8;
+  padding: 60px 0;
+}
+
+#marquee h1 {
+  font-size: 72px;
+}
+
+#marquee h1,
+#marquee h4 {
+  color: #fff;
+}
+
+.implement-section {
+  padding-top: 40px;
+}
+
+#implement-input {
+  width: 100%;
+}
