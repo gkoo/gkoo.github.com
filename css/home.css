@@ -20,8 +20,8 @@
   width: 100%;
 }
 
-.main-body {
-  font-family: Garamond;
+.main-body p {
+  font-family: Georgia, Cambria, "Times New Roman";
 }
 
 .main-body h2 {
@@ -31,4 +31,12 @@
 
 .my-story {
   font-size: 18px;
+}
+
+#choicevendor-logo {
+  padding-top: 6px;
+}
+
+#linkedin-logo {
+  padding-top: 12px;
 }
