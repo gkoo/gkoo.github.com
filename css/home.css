@@ -19,3 +19,16 @@
 #implement-input {
   width: 100%;
 }
+
+.main-body {
+  font-family: Garamond;
+}
+
+.main-body h2 {
+  font-size: 48px;
+  padding: 20px 0;
+}
+
+.my-story {
+  font-size: 18px;
+}
