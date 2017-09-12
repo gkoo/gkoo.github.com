@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Whose House?</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style>
       #result {
@@ -67,23 +68,8 @@
       </div>
     </div>
     <script src="js/jquery.min.js"></script>
-    <script>
-      var result = null;
-      function choose() {
-        if (!result) {
-          var houses = [
-            'Borderlands',
-            'Koo Fitness Club'
-          ];
-          var randInt = Math.floor(Math.random()*2);
-          console.log(randInt);
-          result = houses[randInt];
-        }
-        $('#result').text(result);
-        $('#result-container').addClass('show');
-      }
-      $('#whose-house-button').click(choose);
-    </script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/whosehouse.js"></script>
+    <script>$('#whose-house-button').click(choose);</script>
   </body>
 </html>
