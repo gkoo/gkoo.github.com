@@ -1,80 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Gordon Koo</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/home.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-    <div id="marquee">
-      <div class="container">
-        <h1 class="site-title text-center">Gordon Koo</h1>
-        <h4 class="text-center">A coder, musician, and general-purpose do-er, for fun and profit.</h4>
-        <div class="implement-section row">
-          <div class="col-sm-8 col-sm-offset-2">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-sm-10">
-                  <input type="text" id="implement-input" class="form-control" placeholder="What needs implementing?">
-                </div>
-                <div class="col-sm-2">
-                  <button id="implement-button" class="btn btn-default" data-toggle="modal" data-target="#implement-modal">
-                    Implement it!
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container main-body">
-      <div class="my-story">
-        <h2 class="text-center">My story</h2>
-        <p>
-          Once upon a time, there was a person named Gordon. He liked to make websites.
-        </p>
-      </div>
+	<head>
+		<title>Gordon Koo</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/home.css" rel="stylesheet" />
+		<link rel="icon" type="image/png" href="img/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	</head>
+	<body>
+		<div id="marquee">
+			<div class="container">
+				<h1 class="site-title text-center">Gordon Koo</h1>
+				<h4 class="text-center">
+					A coder, musician, and general-purpose do-er, for fun and profit.
+				</h4>
+				<div class="implement-section row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-sm-10">
+									<input
+										type="text"
+										id="implement-input"
+										class="form-control"
+										placeholder="What needs implementing?"
+									/>
+								</div>
+								<div class="col-sm-2">
+									<button
+										id="implement-button"
+										class="btn btn-default"
+										data-toggle="modal"
+										data-target="#implement-modal"
+									>
+										Implement it!
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container main-body">
+			<div class="my-story">
+				<h2 class="text-center">My story</h2>
+				<p>
+					Once upon a time, there was a person named Gordon. He liked to make
+					websites.
+				</p>
+			</div>
+		</div>
 
-      <div class="satisfied-customers">
-        <h2 class="text-center">Satisfied Customers</h2>
-        <div class="row">
-          <div class="col-sm-4 text-center" id="choicevendor-logo">
-            <img src="img/choicevendor.png" alt="Choicevendor">
-          </div>
-          <div class="col-sm-4 text-center">
-            <img src="img/linkedin_logo.png" alt="LinkedIn" id="linkedin-logo">
-          </div>
-          <div class="col-sm-4 text-center">
-            <img src="img/airbnb_logo.jpg" alt="Airbnb">
-          </div>
-        </div>
-      </div>
+		<div id="implement-modal" class="modal" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button
+							type="button"
+							class="close"
+							data-dismiss="modal"
+							aria-label="Close"
+						>
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Oops!</h4>
+					</div>
+					<div class="modal-body">
+						We're sorry! This feature hasn't been implemented yet!
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							Close
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-      <!--<h2>Some satisfied customers</h2>-->
-      <!--<p>customers go here</p>-->
-    </div>
-
-    <div id="implement-modal" class="modal" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Oops!</h4>
-          </div>
-          <div class="modal-body">
-            We're sorry! This feature hasn't been implemented yet!
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
 </html>
